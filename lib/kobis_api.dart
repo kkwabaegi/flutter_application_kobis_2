@@ -40,7 +40,8 @@ class KobisApi {
       try {
         var movie = jsonDecode(response.body)['movieInfoResult']['movieInfo']
             as dynamic;
-        print(movie['movieNm']);
+        //movie[0] a[1] => 배열, 리스트 (index = 주소) 보기에 안편함
+        //movie['name'] => Map
         return movie;
       } catch (e) {
         print('try catch에서 걸림');
