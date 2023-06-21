@@ -60,7 +60,7 @@ class _RankPageState extends State<RankPage> {
                     rankColor = Colors.yellow;
                   }
                   return ListTile(
-                    tileColor: Colors.grey,
+                    tileColor: Colors.black12,
                     leading: Container(
                       width: 50,
                       padding: const EdgeInsets.all(15),

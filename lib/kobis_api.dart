@@ -35,11 +35,37 @@ class KobisApi {
     uri = '$uri&movieCd=$movieCd';
     //http에서 get으로 받으면 주소창에 정보가 보이고, post로 받으면 보이지 않는다
     var response = await http.get(Uri.parse(uri));
+    print(response.body);
     if (response.statusCode == 200) {
       //정상 movieInfoResult.movieInfo
       try {
         var movie = jsonDecode(response.body)['movieInfoResult']['movieInfo']
             as dynamic;
+        //movie[0] a[1] => 배열, 리스트 (index = 주소) 보기에 안편함
+        //movie['name'] => Map
+        return movie;
+      } catch (e) {
+        print('try catch에서 걸림');
+        return [];
+      }
+    } else {
+      //에러
+      return [];
+    }
+  }
+
+  Future<dynamic> getCompanyDetail({required String companyCd}) async {
+    var uri = '${_site}company/searchCompanyInfo.json';
+    uri = '$uri?key=$apiKey';
+    uri = '$uri&movieCd=$companyCd';
+    //http에서 get으로 받으면 주소창에 정보가 보이고, post로 받으면 보이지 않는다
+    var response = await http.get(Uri.parse(uri));
+    print(response.body);
+    if (response.statusCode == 200) {
+      //정상 movieInfoResult.movieInfo
+      try {
+        var movie = jsonDecode(response.body)['companyInfoResult']
+            ['companyInfo'] as dynamic;
         //movie[0] a[1] => 배열, 리스트 (index = 주소) 보기에 안편함
         //movie['name'] => Map
         return movie;
