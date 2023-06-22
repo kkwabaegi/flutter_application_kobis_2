@@ -40,6 +40,14 @@ class _DetailViewState extends State<DetailView> {
       gradeStyle['color'] = Colors.blue;
       gradeStyle['text'] = '15';
     }
+    if (grade == '12세이상관람가') {
+      gradeStyle['color'] = Colors.green;
+      gradeStyle['text'] = '12';
+    }
+    if (grade == '19세이상관람가') {
+      gradeStyle['color'] = Colors.red;
+      gradeStyle['text'] = '19';
+    }
     return SingleChildScrollView(
       child: Column(
         children: [
